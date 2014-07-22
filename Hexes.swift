@@ -3,7 +3,17 @@ import UIKit
 
 extension String {
 
-  public var UIColor: UIKit.UIColor { return self as UIKit.UIColor }
+  public var CGColor: CGColorRef {
+    return self.CGColor(1)
+  }
+
+  public var UIColor: UIKit.UIColor {
+    return self.UIColor(1)
+  }
+  
+  public func CGColor (alpha: CGFloat) -> CGColorRef {
+    return self.UIColor(alpha).CGColor
+  }
   
   public func UIColor (alpha: CGFloat) -> UIKit.UIColor {
     var hex = self
@@ -47,7 +57,7 @@ extension String {
   }
   
   public func __conversion () -> CGColorRef {
-    return (self as UIKit.UIColor).CGColor
+    return self.CGColor(1)
   }
   
   private subscript (r: Range<Int>) -> String {
