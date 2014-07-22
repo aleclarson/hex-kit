@@ -42,7 +42,7 @@ let color = "ff".UIColor
 let color = "ff".CGColor
 ```
 
-Sometimes, you need to set the `UIColor`'s opacity. Explicit conversion is here for you!
+Sometimes, it's necessary to set the color's `alpha`. Explicit conversion makes it possible!
 
 ```Swift
 let color = "ff".UIColor(0.5)
