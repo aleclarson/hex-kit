@@ -1,8 +1,6 @@
-##Hexes
+#Hexes
 
-Hexes makes it easy to define a `UIColor` or `CGColorRef` with a `String` like **#000000**.
-
-###How to use
+Hexes makes it easy to define a `UIColor` or `CGColorRef` with a `String` like `"#000000"`.
 
 ```Swift
 // Implicit conversion to a UIColor
@@ -24,3 +22,5 @@ let color: UIColor = "229762" // Acts like "#229762"
 let color: CGColorRef = "123" // Acts like "#123123"
 let color: UIColor = "00" // Acts like "#000000"
 ```
+
+Enjoy!
