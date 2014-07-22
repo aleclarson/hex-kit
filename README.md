@@ -2,7 +2,7 @@
 
 Hexes is a tiny `String` extension written in Swift. With Hexes, it's **super easy** to convert a hex color code `#000000` into a `UIColor` or a `CGColorRef`!
 
-**Why is Hexes the best option?** Hexes allows implicit and explicit conversion, as well as abbreviated hex codes! Don't worry; this will all make sense in a minute!
+**Why is Hexes the best option?** Implicit and explicit conversion from `String` to `UIColor` or `CGColorRef`. Abbreviated hex codes for brevity. Set the color's `alpha` when you need to.
 
 ###Implicit conversion
 
