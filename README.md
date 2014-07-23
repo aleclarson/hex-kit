@@ -9,15 +9,15 @@ Hexes is a tiny `String` extension written in Swift. With Hexes, it's **super ea
 Implicit conversion lets you set the `backgroundColor` of a `UIView` or a `CALayer` with a simple, little `String`!
 
 ```Swift
-myView.backgroundColor = "00" // black
-myLayer.backgroundColor = "00"
+myView.backgroundColor = "0" // black
+myLayer.backgroundColor = "0"
 ```
 
 Implicit conversion works with any variable with the type of `UIColor` or `CGColorRef`.
 
 ```Swift
-let color: UIColor = "ff" // white
-let color: CGColorRef = "ff"
+let color: UIColor = "f" // white
+let color: CGColorRef = "f"
 ```
 
 ###Abbreviations
@@ -27,7 +27,7 @@ Reduce redundancy with abbreviated hex codes! Here are the formats that Hexes su
 ```Swift
 "#01b471"
 "01b471"
-"#123" // Acts like "#123123"
+"#123" // Acts like "#112233"
 "123"
 "#00" // Acts like "#000000"
 "00"
@@ -38,15 +38,15 @@ Reduce redundancy with abbreviated hex codes! Here are the formats that Hexes su
 For those who want to be clear of their code's intentions, there is explicit conversion!
 
 ```Swift
-let color = "ff".UIColor
-let color = "ff".CGColor
+let color = "f".UIColor
+let color = "f".CGColor
 ```
 
 Sometimes, it's necessary to set the color's `alpha`. Explicit conversion makes it possible!
 
 ```Swift
-let color = "ff".UIColor(0.5)
-let color = "ff".CGColor(0.5)
+let color = "f".UIColor(0.5)
+let color = "f".CGColor(0.5)
 ```
 
 ###Installation
