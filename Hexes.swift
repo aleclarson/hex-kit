@@ -25,14 +25,19 @@ extension String {
     
     let length = countElements(hex)
     
+    // Turn "f" into "ffffff"
+    if length == 1 {
+      hex = repeat(hex, 6)
+    }
+    
     // Turn "ff" into "ffffff"
-    if length == 2 {
+    else if length == 2 {
       hex = repeat(hex, 3)
     }
     
-    // Turn "123" into "123123"
+    // Turn "123" into "112233"
     else if length == 3 {
-      hex = repeat(hex, 2)
+      hex = repeat(hex[0], 2) + repeat(hex[1], 2) + repeat(hex[2], 2)
     }
     
     assert(countElements(hex) == 6, "Invalid hex value")
@@ -58,6 +63,10 @@ extension String {
   
   public func __conversion () -> CGColorRef {
     return self.CGColor(1)
+  }
+  
+  private subscript (i: Int) -> String {
+    return String(Array(self)[i])
   }
   
   private subscript (r: Range<Int>) -> String {
