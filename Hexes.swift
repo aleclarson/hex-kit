@@ -18,26 +18,19 @@ extension String {
   public func UIColor (alpha: CGFloat) -> UIKit.UIColor {
     var hex = self
     
-    // Strip leading "#" if it exists
-    if hex.hasPrefix("#") {
+    if hex.hasPrefix("#") { // Strip leading "#" if it exists
       hex = hex.substringFromIndex(hex.startIndex.successor())
     }
     
-    let length = countElements(hex)
-    
-    // Turn "f" into "ffffff"
-    if length == 1 {
-      hex = repeat(hex, 6)
-    }
-    
-    // Turn "ff" into "ffffff"
-    else if length == 2 {
-      hex = repeat(hex, 3)
-    }
-    
-    // Turn "123" into "112233"
-    else if length == 3 {
-      hex = repeat(hex[0], 2) + repeat(hex[1], 2) + repeat(hex[2], 2)
+    switch countElements(hex) {
+      case 1: // Turn "f" into "ffffff"
+        hex = hex.repeat(6)
+      case 2: // Turn "ff" into "ffffff"
+        hex = hex.repeat(3)
+      case 3: // Turn "123" into "112233"
+        hex = hex[0].repeat(2) + hex[1].repeat(2) + hex[2].repeat(2)
+      default:
+        break
     }
     
     assert(countElements(hex) == 6, "Invalid hex value")
@@ -56,24 +49,43 @@ extension String {
     
     return UIKit.UIColor(red: red, green: green, blue: blue, alpha: alpha)
   }
+}
 
-  public func __conversion () -> UIKit.UIColor {
-    return self.UIColor(1)
+extension UIColor : StringLiteralConvertible {
+  public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
+
+  public class func convertFromExtendedGraphemeClusterLiteral(value: ExtendedGraphemeClusterLiteralType) -> UIColor {
+    return value.UIColor
   }
-  
-  public func __conversion () -> CGColorRef {
-    return self.CGColor(1)
-  }
-  
-  private subscript (i: Int) -> String {
-    return String(Array(self)[i])
-  }
-  
-  private subscript (r: Range<Int>) -> String {
-    return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
+
+  public class func convertFromStringLiteral(value: StringLiteralType) -> UIColor {
+    return value.UIColor
   }
 }
 
-private func repeat (string: String, count: Int) -> String {
-  return "".stringByPaddingToLength(countElements(string) * count, withString: string, startingAtIndex:0)
+extension CGColor : StringLiteralConvertible {
+  public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
+
+  public class func convertFromExtendedGraphemeClusterLiteral(value: ExtendedGraphemeClusterLiteralType) -> CGColor {
+    return value.CGColor
+  }
+
+  public class func convertFromStringLiteral(value: StringLiteralType) -> CGColor {
+    return value.CGColor
+  }
+}
+
+private extension String {
+  
+  func repeat (count: Int) -> String {
+    return "".stringByPaddingToLength(countElements(self) * count, withString: self, startingAtIndex:0)
+  }
+  
+  subscript (i: Int) -> String {
+    return String(Array(self)[i])
+  }
+  
+  subscript (r: Range<Int>) -> String {
+    return substringWithRange(Range(start: advance(startIndex, r.startIndex), end: advance(startIndex, r.endIndex)))
+  }
 }
