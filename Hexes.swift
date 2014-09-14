@@ -51,30 +51,6 @@ extension String {
   }
 }
 
-extension UIColor : StringLiteralConvertible {
-  public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
-
-  public class func convertFromExtendedGraphemeClusterLiteral(value: ExtendedGraphemeClusterLiteralType) -> UIColor {
-    return value.UIColor
-  }
-
-  public class func convertFromStringLiteral(value: StringLiteralType) -> UIColor {
-    return value.UIColor
-  }
-}
-
-extension CGColor : StringLiteralConvertible {
-  public typealias ExtendedGraphemeClusterLiteralType = StringLiteralType
-
-  public class func convertFromExtendedGraphemeClusterLiteral(value: ExtendedGraphemeClusterLiteralType) -> CGColor {
-    return value.CGColor
-  }
-
-  public class func convertFromStringLiteral(value: StringLiteralType) -> CGColor {
-    return value.CGColor
-  }
-}
-
 private extension String {
   
   func repeat (count: Int) -> String {
