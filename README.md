@@ -27,6 +27,10 @@ Here are the supported formats:
 "#12" // Represents "#121212"
 
 "12"
+
+"#F" // Represents "#FFFFFF"
+
+"F"
 ```
 
 Just add the `Hexes.swift` file to your project, and you're good to go! Enjoy!
