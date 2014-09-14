@@ -1,3 +1,5 @@
+<img src="http://i.imgur.com/g09gNAA.jpg"/>
+
 A simple library for converting a [hex triplet](http://en.wikipedia.org/wiki/Web_colors#Hex_triplet) (represented by a `String`) into a `UIColor` or `CGColor`!
 
 ```Swift
