@@ -22,7 +22,7 @@ extension String {
       hex = hex.substringFromIndex(hex.startIndex.successor())
     }
     
-    switch countElements(hex) {
+    switch count(hex) {
       case 1: // Turn "f" into "ffffff"
         hex = hex.repeat(6)
       case 2: // Turn "ff" into "ffffff"
@@ -33,7 +33,7 @@ extension String {
         break
     }
     
-    assert(countElements(hex) == 6, "Invalid hex value")
+    assert(count(hex) == 6, "Invalid hex value")
     
     var r: UInt32 = 0
     var g: UInt32 = 0
@@ -54,7 +54,7 @@ extension String {
 private extension String {
   
   func repeat (count: Int) -> String {
-    return "".stringByPaddingToLength(countElements(self) * count, withString: self, startingAtIndex:0)
+    return "".stringByPaddingToLength((self as NSString).length * count, withString: self, startingAtIndex:0)
   }
   
   subscript (i: Int) -> String {
