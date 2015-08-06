@@ -21,19 +21,19 @@ extension String {
     if hex.hasPrefix("#") { // Strip leading "#" if it exists
       hex = hex.substringFromIndex(hex.startIndex.successor())
     }
-    
-    switch count(hex) {
+
+    switch hex.characters.count {
       case 1: // Turn "f" into "ffffff"
-        hex = hex.repeat(6)
+        hex = hex._repeat(6)
       case 2: // Turn "ff" into "ffffff"
-        hex = hex.repeat(3)
+        hex = hex._repeat(3)
       case 3: // Turn "123" into "112233"
-        hex = hex[0].repeat(2) + hex[1].repeat(2) + hex[2].repeat(2)
+        hex = hex[0]._repeat(2) + hex[1]._repeat(2) + hex[2]._repeat(2)
       default:
         break
     }
     
-    assert(count(hex) == 6, "Invalid hex value")
+    assert(hex.characters.count == 6, "Invalid hex value")
     
     var r: UInt32 = 0
     var g: UInt32 = 0
@@ -53,12 +53,12 @@ extension String {
 
 private extension String {
   
-  func repeat (count: Int) -> String {
+  func _repeat (count: Int) -> String {
     return "".stringByPaddingToLength((self as NSString).length * count, withString: self, startingAtIndex:0)
   }
   
   subscript (i: Int) -> String {
-    return String(Array(self)[i])
+    return String(Array(arrayLiteral: self)[i])
   }
   
   subscript (r: Range<Int>) -> String {
